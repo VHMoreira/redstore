@@ -1,17 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import GlobalStyle from "./shared/styles/global";
 import Routes from './routes';
+import { ThemeProvider } from 'styled-components';
+import { COLORS } from './shared/constants/theme.constants';
 
 const App: React.FC = () => {
   return (
     <>
-      {/* <GlobalStyle /> */}
-      <Router>
-        {/* <AppProvider> */}
-        <Routes />
-        {/* </AppProvider> */}
-      </Router>
+      <GlobalStyle />
+      <ThemeProvider theme={{ colors: COLORS }}>
+        <Router>
+          {/* <AppProvider> */}
+          <Routes />
+          {/* </AppProvider> */}
+        </Router>
+      </ThemeProvider>
     </>
   );
 }
