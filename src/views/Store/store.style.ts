@@ -14,7 +14,15 @@ export const Container = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
+
+        div{
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+        }
     }
 `;
 
@@ -26,6 +34,13 @@ export const HeaderInput = styled.input`
     border-radius: 5px;
     border: 0px solid black;
     color: ${(props) => props.theme.colors.fontDark};
+`;
+
+export const Content = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 `;
 
 export const GridList = styled.div`

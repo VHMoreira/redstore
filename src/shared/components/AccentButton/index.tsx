@@ -1,10 +1,14 @@
 import React from "react";
 import { ButtonAccent } from "./accent-button.style";
 
-const AccentButton: React.FC = () => {
+interface Props {
+    style?: any;
+}
+
+const AccentButton: React.FC<Props> = ({ children, style }) => {
     return (
-        <ButtonAccent>
-            Adicionar ao Carrinho
+        <ButtonAccent style={style}>
+            {children}
         </ButtonAccent>
     );
 };

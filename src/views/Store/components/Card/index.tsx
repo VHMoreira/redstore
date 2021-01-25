@@ -5,7 +5,9 @@ import { CardContainer } from "./card.style";
 const Card: React.FC = () => {
     return (
         <CardContainer>
-            <img alt='bulba' src='https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon%20-%20256x256/pokemon_icon_004_00.png' />
+            <img
+                alt='bulba'
+                src='https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Pokemon%20-%20256x256/pokemon_icon_006_00.png' />
             <span>Charmander</span>
             <span>R$ 200</span>
             <ButtonAccent>

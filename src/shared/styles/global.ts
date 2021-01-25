@@ -19,7 +19,7 @@ export default createGlobalStyle`
     }
     h1{
         font-weight: 700;
-        font-family: 'Ubuntu';
+        font-family: 'Ubuntu' sans-serif;
         font-size: 30px;
     }
     h1, span{
