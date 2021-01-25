@@ -5,6 +5,7 @@ import GlobalStyle from "./shared/styles/global";
 import Routes from './routes';
 import { ThemeProvider } from 'styled-components';
 import { COLORS } from './shared/constants/theme.constants';
+import AppProvider from './contexts';
 
 const App: React.FC = () => {
   return (
@@ -12,9 +13,9 @@ const App: React.FC = () => {
       <GlobalStyle />
       <ThemeProvider theme={{ colors: COLORS }}>
         <Router>
-          {/* <AppProvider> */}
-          <Routes />
-          {/* </AppProvider> */}
+          <AppProvider>
+            <Routes />
+          </AppProvider>
         </Router>
       </ThemeProvider>
     </>
