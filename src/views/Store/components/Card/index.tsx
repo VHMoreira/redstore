@@ -1,5 +1,6 @@
-import React from "react";
-import { ButtonAccent } from "../../../../shared/components/AccentButton/accent-button.style";
+import React, { useContext } from "react";
+import { CartContext } from "../../../../contexts/CartContext";
+import { ButtonAccent } from "../AccentButton/accent-button.style";
 import { CardContainer } from "./card.style";
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const Card: React.FC<Props> = ({ img, name, value }) => {
+    const { addToCart } = useContext(CartContext);
     return (
         <CardContainer>
             <img
@@ -16,7 +18,7 @@ const Card: React.FC<Props> = ({ img, name, value }) => {
                 src={img} />
             <span>{name}</span>
             <span>R$ {value}</span>
-            <ButtonAccent>
+            <ButtonAccent onClick={() => addToCart({ name, value })}>
                 Adicionar ao Carrinho
             </ButtonAccent>
         </CardContainer>
