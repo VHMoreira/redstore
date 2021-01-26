@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.div`
     padding: 1.5em;
-    width: 50%;
+    max-width: 50%;
+    margin: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,6 +13,7 @@ export const CardContainer = styled.div`
 
     >img{
         width: 10rem;
+        height: 10rem;
     }
 
     >span{
