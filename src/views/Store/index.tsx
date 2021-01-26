@@ -13,7 +13,7 @@ const Store: React.FC = () => {
 
     const { pokemons, loadStore } = useContext(StoreContext);
     const { active, enabled, disabled } = useToggle(false);
-    const { active: listOpened, enabled: openList, disabled: closeList } = useToggle(true);
+    const { active: listOpened, enabled: openList, disabled: closeList, toggle } = useToggle(true);
     const [pokemonsSearch, setPokemonsSearch] = useState<Pokemon[]>([]);
 
     useEffect(() => {
@@ -45,7 +45,7 @@ const Store: React.FC = () => {
                     <img src="https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Types/POKEMON_TYPE_FIRE.png" alt="logo" />
                     <div>
                         <HeaderInput onChange={({ currentTarget }) => filter(currentTarget.value)} />
-                        <CartButton onClick={openList}>
+                        <CartButton onClick={toggle}>
                             <FiShoppingCart size={20} />
                             <span>Carrinho</span>
                         </CartButton>
