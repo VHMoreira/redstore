@@ -51,11 +51,13 @@ const CartProvider: React.FC = ({ children }) => {
             })
         }
 
+        localStorage.setItem('@redstore:cartitem', JSON.stringify({ items: itensInCart }));
         setData({ items: itensInCart });
 
     }, [data]);
 
     const resetCart = useCallback(() => {
+        localStorage.removeItem('@redstore:cartitem');
         setData({ items: [] });
     }, []);
 

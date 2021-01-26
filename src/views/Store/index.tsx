@@ -1,22 +1,28 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { StoreContext } from "../../contexts/StoreContext";
 import { useToggle } from "../../hooks/useToogle";
-import Cartbutton from "./components/CartButton";
 import CartList from "./components/CartList";
 import ModalConfirm from "../../shared/components/ModalConfirm";
 import Card from "./components/Card";
 import { Container, Content, GridList, HeaderInput } from "./store.style";
 import { Pokemon } from "../../models/Pokemon";
+import { CartButton } from "./components/CartButton/cart-button.style";
+import { FiShoppingCart } from "react-icons/fi";
 
 const Store: React.FC = () => {
 
     const { pokemons, loadStore } = useContext(StoreContext);
     const { active, enabled, disabled } = useToggle(false);
+    const { active: listOpened, enabled: openList, disabled: closeList } = useToggle(true);
     const [pokemonsSearch, setPokemonsSearch] = useState<Pokemon[]>([]);
 
     useEffect(() => {
-        loadStore()
+        loadStore();
     }, [loadStore]);
+
+    useEffect(() => {
+        setPokemonsSearch(pokemons);
+    }, [pokemons]);
 
     const filter = useCallback((pokemonName: string) => {
 
@@ -39,14 +45,17 @@ const Store: React.FC = () => {
                     <img src="https://raw.githubusercontent.com/PokeMiners/pogo_assets/master/Images/Types/POKEMON_TYPE_FIRE.png" alt="logo" />
                     <div>
                         <HeaderInput onChange={({ currentTarget }) => filter(currentTarget.value)} />
-                        <Cartbutton />
+                        <CartButton onClick={openList}>
+                            <FiShoppingCart size={20} />
+                            <span>Carrinho</span>
+                        </CartButton>
                     </div>
                 </header>
                 <Content>
                     <GridList>
                         {pokemonsSearch.length > 1 && pokemonsSearch.map(p => <Card key={p.name} img={p.img} name={p.name} value={p.value} />)}
                     </GridList>
-                    <CartList setIsOpen={enabled} />
+                    {listOpened && <CartList closeList={closeList} setIsOpen={enabled} />}
                 </Content>
             </Container>
             {active && <ModalConfirm isOpen={active} setIsOpen={disabled} />}

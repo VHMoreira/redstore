@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const CartListContainer = styled.div`
+    flex: 1;
     padding: 10px;
-    margin: 10px 50px 0px 10px;
+    margin: 10px 5px 0px 10px;
     width: 100%;
-    max-width: 400px;
+    min-width: 400px;
     height: 70vh;
     background-color: #FFF;
     display: flex;
@@ -12,6 +13,27 @@ export const CartListContainer = styled.div`
     justify-content: space-between;
     position: sticky;
     top: 10px;
+
+    @media(max-width: 900px) {
+        position: fixed;
+        height: 100vh;
+        min-width: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0;
+    }
+
+    >header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        >svg{
+            cursor: pointer;
+        }
+    }
 
     >section{
         flex: 1;

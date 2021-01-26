@@ -1,4 +1,5 @@
 import React, { useContext, useMemo } from "react";
+import { FiMinusCircle } from "react-icons/fi";
 import { CartContext } from "../../../../contexts/CartContext";
 import { ButtonAccent } from "../AccentButton/accent-button.style";
 import { CartListContainer, CartListItem } from "./cart-list.style";
@@ -11,10 +12,11 @@ interface Item {
 }
 
 interface Props {
+    closeList(): void;
     setIsOpen(): void;
 }
 
-const CartList: React.FC<Props> = ({ setIsOpen }) => {
+const CartList: React.FC<Props> = ({ setIsOpen, closeList }) => {
     const { items, resetCart } = useContext(CartContext);
 
     const total = useMemo(() => items.reduce((acc, current) => acc + current.value, 0), [items]);
@@ -26,6 +28,7 @@ const CartList: React.FC<Props> = ({ setIsOpen }) => {
                 <h1>
                     Resumo do Pedido
                 </h1>
+                <FiMinusCircle onClick={closeList} />
             </header>
 
             <section>
@@ -49,14 +52,14 @@ const CartList: React.FC<Props> = ({ setIsOpen }) => {
                 <div>
                     Total: {`R$ ${total.toFixed(2).replace('.', ',')}`}
                 </div>
-                <ButtonAccent onClick={() => {
+                {items.length > 0 && <ButtonAccent onClick={() => {
                     setIsOpen();
                     resetCart();
                 }} style={
                     { padding: 20 }
                 }>
                     Finalizar Compra
-                </ButtonAccent>
+                </ButtonAccent>}
             </footer>
         </CartListContainer>
     );
