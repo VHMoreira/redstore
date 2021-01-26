@@ -14,7 +14,8 @@ interface Pokemon {
 
 interface CartContextData {
     items: Item[];
-    addToCart(pokemon: Pokemon): Promise<void>;
+    addToCart(pokemon: Pokemon): void;
+    resetCart(): void;
 }
 
 interface CartContextState {
@@ -34,7 +35,7 @@ const CartProvider: React.FC = ({ children }) => {
         return { items: [] } as CartContextState;
     });
 
-    const addToCart = useCallback(async (pokemon: Pokemon) => {
+    const addToCart = useCallback((pokemon: Pokemon) => {
         const itensInCart = [...data.items];
         const existsInCart = itensInCart.find(i => i.name === pokemon.name);
 
@@ -54,8 +55,12 @@ const CartProvider: React.FC = ({ children }) => {
 
     }, [data]);
 
+    const resetCart = useCallback(() => {
+        setData({ items: [] });
+    }, []);
+
     return (
-        <CartContext.Provider value={{ items: data.items, addToCart }}>
+        <CartContext.Provider value={{ items: data.items, addToCart, resetCart }}>
             {children}
         </CartContext.Provider>
     )

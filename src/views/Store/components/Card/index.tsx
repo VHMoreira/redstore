@@ -17,7 +17,7 @@ const Card: React.FC<Props> = ({ img, name, value }) => {
                 alt={name}
                 src={img} />
             <span>{name}</span>
-            <span>R$ {value}</span>
+            <span>R$ {value.toString().replace('.', ',')}</span>
             <ButtonAccent onClick={() => addToCart({ name, value })}>
                 Adicionar ao Carrinho
             </ButtonAccent>

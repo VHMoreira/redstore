@@ -15,7 +15,7 @@ interface Props {
 }
 
 const CartList: React.FC<Props> = ({ setIsOpen }) => {
-    const { items } = useContext(CartContext);
+    const { items, resetCart } = useContext(CartContext);
 
     const total = useMemo(() => items.reduce((acc, current) => acc + current.value, 0), [items]);
 
@@ -40,16 +40,19 @@ const CartList: React.FC<Props> = ({ setIsOpen }) => {
                             </span>
                         </div>
                         <span>
-                            R$ {item.value.toFixed(2)}
+                            R$ {item.value.toFixed(2).replace('.', ',')}
                         </span>
                     </CartListItem>)}
             </section>
 
             <footer>
                 <div>
-                    Total: {`R$ ${total.toFixed(2)}`}
+                    Total: {`R$ ${total.toFixed(2).replace('.', ',')}`}
                 </div>
-                <ButtonAccent onClick={setIsOpen} style={
+                <ButtonAccent onClick={() => {
+                    setIsOpen();
+                    resetCart();
+                }} style={
                     { padding: 20 }
                 }>
                     Finalizar Compra
