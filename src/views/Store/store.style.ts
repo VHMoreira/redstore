@@ -12,15 +12,13 @@ export const Container = styled.div`
         width: 100%;
         padding: 20px;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
 
         div{
-            margin-top: 10px;
             width: 100%;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: flex-end;
         }
     }
@@ -29,7 +27,7 @@ export const Container = styled.div`
 export const HeaderInput = styled.input`
     flex: 1;
     width: 100%;
-    margin-top: 10px;
+    max-width: 300px;
     padding: 5px;
     border-radius: 5px;
     border: 0px solid black;
@@ -45,6 +43,7 @@ export const Content = styled.div`
 
 export const GridList = styled.div`
     width: 100%;
+    margin-top: 5px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;

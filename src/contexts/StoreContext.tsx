@@ -1,13 +1,6 @@
 import axios from 'axios';
-import { randomInt } from 'crypto';
 import React, { createContext, useCallback, useState, useContext } from 'react';
-
-interface Pokemon {
-    // id: string;
-    img: string;
-    name: string;
-    value: number;
-}
+import { Pokemon } from '../models/Pokemon';
 
 interface StoreContextData {
     pokemons: Pokemon[];
